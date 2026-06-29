@@ -1,0 +1,24 @@
+package cars
+
+// CalculateWorkingCarsPerHour calculates how many working cars are
+// produced by the assembly line every hour.
+func CalculateWorkingCarsPerHour(productionRate int, successRate float64) float64 {
+	return float64((float64(productionRate) * successRate) / 100.0) 
+}
+    
+// CalculateWorkingCarsPerMinute calculates how many working cars are
+// produced by the assembly line every minute.
+func CalculateWorkingCarsPerMinute(productionRate int, successRate float64) int {
+	carsPerMinute := productionRate / 60
+    return int(float64(carsPerMinute) * successRate)/100
+}
+
+// CalculateCost works out the cost of producing the given number of cars.
+func CalculateCost(carsCount int) uint {
+	groupsOfTen := int(carsCount / 10)
+    remainingCars := int(carsCount % 10)
+
+    cost :=  uint(groupsOfTen * 95000 + remainingCars * 10000)
+
+    return cost
+}
